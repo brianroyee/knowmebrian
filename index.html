@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brian who?</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <canvas class="topography-canvas" id="topographyCanvas"></canvas>
+  
+  <div class="phone-container">
+    <div class="phone-content">
+      <div class="status-bar">
+        <div class="time" id="current-time">9:41</div>
+        <div class="status-icons">
+          <label class="theme-toggle">
+            <input hidden type="checkbox" id="theme-toggle">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <section id="home" class="profile">
+        <img src="images/brian.JPG" alt="My cute face bro!" class="profile-img">
+        <h1 class="name">Brian Roy Mathew</h1>
+        <p class="title"><b>Q/A Engineer</b></p>
+        <p class="bio">I'm an electrical engineering student and a QA tester with experience in embedded systems, hardware security, OSINT, and automation. I’ve worked on community-driven projects, organized tech events, and founded TechNeeks to make technical education accessible. My interests also include cybersecurity, sustainable design, and full-stack development.</p>
+        <a href="cv.pdf" download class="cv-button">
+           Get my resume
+        </a>
+      </section>
+
+      <section id="skills">
+        <h2 class="section-title">🛠️ Skills</h2>
+        <div class="skills-container">
+          <div class="skill-tag">Web Development</div>
+          <div class="skill-tag">Python</div>
+          <div class="skill-tag">Selenium</div>
+          <div class="skill-tag">Figma</div>
+          <div class="skill-tag">Git</div>
+          <div class="skill-tag">OSINT</div>
+          <div class="skill-tag">Marketing & Sales</div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2 class="section-title">📁 Projects</h2>
+        <div class="project-card">
+          <img class="project-img" src="images/BRAHMA BOT.png">
+          <h3 class="project-title">Brahma '25' Bot</h3>
+          <p class="project-desc">A responsive telegram bot to help participants find their way around college techfest "Brahma". Made with Python & Hosted on AWS</p>
+          <a href="https://github.com/brianroyee/brahma25helpline" class="github-btn" target="_blank">
+            View on GitHub
+          </a>
+        </div>
+        <div class="project-card">
+          <img class="project-img" src="images/EXPENSE TRACKER.png">
+          <h3 class="project-title">Python Expense Tracker</h3>
+          <p class="project-desc">An Expense Tracker that can store expenses and save them with time inputs and can be exported as excel sheet</p>
+          <a href="https://github.com/brianroyee/ExpenseTracker" class="github-btn" target="_blank">
+            View on GitHub
+          </a>
+        </div>
+        <div class="view-more">
+          <button class="view-more-btn">
+            <a href=" ">More Projects Loading soon...</a>
+          </button>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2 class="section-title">📞 Contact</h2>
+        <div class="social-links">
+          <a href="mailto:brianroyee@ieee.org" class="social-icon" target="_blank">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://linkedin.com/in/brianroymathew" class="social-icon" target="_blank">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/brianroyee" class="social-icon" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://instagram.com/brianroymathew" class="social-icon" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </section>
+
+      <div class="bottom-nav">
+        <a href="#home" class="nav-item active">
+          <div class="nav-icon">⌂</div>
+          <div>Home</div>
+        </a>
+        <a href="#skills" class="nav-item">
+          <div class="nav-icon">⚙</div>
+          <div>Skills</div>
+        </a>
+        <a href="#projects" class="nav-item">
+          <div class="nav-icon">⌨</div>
+          <div>Projects</div>
+        </a>
+        <a href="#contact" class="nav-item">
+          <div class="nav-icon">✆</div>
+          <div>Contact</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
