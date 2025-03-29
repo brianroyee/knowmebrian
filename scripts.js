@@ -1,7 +1,9 @@
 const canvas = document.getElementById('topographyCanvas');
 const ctx = canvas.getContext('2d');
 let time = 0;
+let activeSection = 'home'; // Track active section
 
+// Canvas functions
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -34,29 +36,93 @@ function drawTopography() {
   requestAnimationFrame(drawTopography);
 }
 
+// Update time
 function updateTime() {
   const now = new Date();
   document.getElementById('current-time').textContent = 
     `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
 }
 
+// Theme toggle
 document.getElementById('theme-toggle').addEventListener('change', function() {
   document.body.classList.toggle('dark-mode', this.checked);
+  localStorage.setItem('darkMode', this.checked);
 });
 
+// Check for saved theme preference
+if (localStorage.getItem('darkMode') === 'true') {
+  document.getElementById('theme-toggle').checked = true;
+  document.body.classList.add('dark-mode');
+}
+
+// Navigation handling
+function setActiveNavItem(sectionId) {
+  document.querySelectorAll('.nav-item').forEach(nav => {
+    nav.classList.remove('active');
+    if (nav.getAttribute('href') === `#${sectionId}`) {
+      nav.classList.add('active');
+    }
+  });
+  activeSection = sectionId;
+}
+
+// Scroll spy to detect active section
+function setupScrollSpy() {
+  const sections = document.querySelectorAll('section[id]');
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setActiveNavItem(entry.target.id);
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+}
+
+// Smooth scroll for navigation
 document.querySelectorAll('.nav-item').forEach(item => {
   item.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-    this.classList.add('active');
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
-    });
+    const href = this.getAttribute('href');
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      document.querySelector(href).scrollIntoView({
+        behavior: 'smooth'
+      });
+      history.pushState(null, null, href);
+    }
   });
 });
 
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-updateTime();
-setInterval(updateTime, 1000);
-drawTopography();
+// Handle browser back/forward navigation
+window.addEventListener('popstate', () => {
+  if (location.hash) {
+    document.querySelector(location.hash).scrollIntoView();
+    setActiveNavItem(location.hash.substring(1));
+  }
+});
+
+// Initialize everything
+function init() {
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+  updateTime();
+  setInterval(updateTime, 1000);
+  drawTopography();
+  setupScrollSpy();
+  
+  // Set initial active section based on URL hash
+  if (location.hash) {
+    setActiveNavItem(location.hash.substring(1));
+  }
+}
+
+init();
