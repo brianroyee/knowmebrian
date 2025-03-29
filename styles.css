@@ -337,9 +337,10 @@
     padding: 15px 0;
     background: rgba(39, 36, 36);
     position: sticky;
-    bottom: 0;
+    bottom: 0px;
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 24px;
+    margin: auto;
   }
   
   .nav-item {
