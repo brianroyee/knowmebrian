@@ -1,4 +1,3 @@
-// Topographic Animation
 const canvas = document.getElementById('topographyCanvas');
 const ctx = canvas.getContext('2d');
 let time = 0;
@@ -35,19 +34,16 @@ function drawTopography() {
   requestAnimationFrame(drawTopography);
 }
 
-// Time Update
 function updateTime() {
   const now = new Date();
   document.getElementById('current-time').textContent = 
     `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
 }
 
-// Theme Toggle
 document.getElementById('theme-toggle').addEventListener('change', function() {
   document.body.classList.toggle('dark-mode', this.checked);
 });
 
-// Navigation
 document.querySelectorAll('.nav-item').forEach(item => {
   item.addEventListener('click', function(e) {
     e.preventDefault();
@@ -59,7 +55,6 @@ document.querySelectorAll('.nav-item').forEach(item => {
   });
 });
 
-// Initialization
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 updateTime();
