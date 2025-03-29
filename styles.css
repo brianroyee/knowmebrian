@@ -383,6 +383,20 @@
     opacity: 0.1;
     z-index: 1;
   }
+
+  .return-home{
+    background: var(--primary-color);
+    text-align: center;
+    margin: 20px 0;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
   
   /* Dark Mode Adjustments */
   body.dark-mode {
