@@ -25,7 +25,6 @@
     overflow: hidden;
   }
 
-  /* Loading Screen Styles */
   .loading-screen {
     position: fixed;
     top: 0;
@@ -198,7 +197,7 @@
     background: var(--secondary-color);
     transform: translateY(-10px);
   }
-  
+
   .section-title {
     font-size: 18px;
     font-weight: bold;
@@ -569,4 +568,8 @@
 
   .dark-mode .bottom-nav {
     background: rgba(45, 45, 45, 0.9);
+  }
+
+  .dark-mode .github-btn{
+    background: var(--primary-color);
   }
