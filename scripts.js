@@ -110,19 +110,41 @@ window.addEventListener('popstate', () => {
   }
 });
 
-// Initialize everything
+// Loading screen handler - modified to ensure minimum 1s display
+window.addEventListener('load', function() {
+  const loadingScreen = document.querySelector('.loading-screen');
+  const loadTime = performance.now();
+  const minDisplayTime = 1000;
+
+  if (loadingScreen) {
+    const remainingTime = minDisplayTime - (performance.now() - loadTime);
+    
+    if (remainingTime > 0) {
+      setTimeout(() => {
+        loadingScreen.classList.add('hidden');
+        setTimeout(() => loadingScreen.remove(), 300); // Remove after fade completes
+      }, remainingTime);
+    } else {
+      loadingScreen.classList.add('hidden');
+      setTimeout(() => loadingScreen.remove(), 300);
+    }
+  }
+});
+
+// Update init function to show loading screen immediately
 function init() {
+  const loadingScreen = document.querySelector('.loading-screen');
+  if (loadingScreen) loadingScreen.style.display = 'flex';
+
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
   updateTime();
   setInterval(updateTime, 1000);
   drawTopography();
   setupScrollSpy();
-  
-  // Set initial active section based on URL hash
+
   if (location.hash) {
     setActiveNavItem(location.hash.substring(1));
   }
 }
-
 init();

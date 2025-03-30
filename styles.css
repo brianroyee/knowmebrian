@@ -25,9 +25,42 @@
     overflow: hidden;
   }
 
-  .a{
-    color: white;
+  /* Loading Screen Styles */
+  .loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--dark-bg), #4c1d95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease 1s; 
   }
+
+  .loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .loader {
+    width: 50px;
+    --b: 8px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #514b82;
+    -webkit-mask:
+      repeating-conic-gradient(#0000 0deg,#000 1deg 70deg,#0000 71deg 90deg),
+      radial-gradient(farthest-side,#0000 calc(100% - var(--b) - 1px),#000 calc(100% - var(--b)));
+    -webkit-mask-composite: destination-in;
+            mask-composite: intersect;
+    animation: l5 1s infinite;
+  }
+
+  @keyframes l5 {to{transform: rotate(.5turn)}}
   
   .phone-container {
     width: 360px;
@@ -193,10 +226,11 @@
   .project-img {
     width: 100%;
     height: 150px;
+    object-fit:cover;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     margin-bottom: 12px;
-    display: flex;
+    display:flex;
     align-items: center;
     justify-content: center;
     color: rgba(255, 255, 255, 0.5);
