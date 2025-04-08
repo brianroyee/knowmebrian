@@ -1,7 +1,7 @@
 const canvas = document.getElementById('topographyCanvas');
 const ctx = canvas.getContext('2d');
 let time = 0;
-let activeSection = 'home'; // Track active section
+let activeSection = 'home';
 
 // Canvas functions
 function resizeCanvas() {
@@ -49,13 +49,13 @@ document.getElementById('theme-toggle').addEventListener('change', function() {
   localStorage.setItem('darkMode', this.checked);
 });
 
-// Check for saved theme preference
+// Check for theme preference
 if (localStorage.getItem('darkMode') === 'true') {
   document.getElementById('theme-toggle').checked = true;
   document.body.classList.add('dark-mode');
 }
 
-// Navigation handling
+// Navigation
 function setActiveNavItem(sectionId) {
   document.querySelectorAll('.nav-item').forEach(nav => {
     nav.classList.remove('active');
@@ -66,7 +66,7 @@ function setActiveNavItem(sectionId) {
   activeSection = sectionId;
 }
 
-// Scroll spy to detect active section
+//detect active section
 function setupScrollSpy() {
   const sections = document.querySelectorAll('section[id]');
   const observerOptions = {
@@ -88,7 +88,7 @@ function setupScrollSpy() {
   });
 }
 
-// Smooth scroll for navigation
+// Smooth scroll
 document.querySelectorAll('.nav-item').forEach(item => {
   item.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
@@ -102,7 +102,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
   });
 });
 
-// Handle browser back/forward navigation
+//browser back/forward navigation
 window.addEventListener('popstate', () => {
   if (location.hash) {
     document.querySelector(location.hash).scrollIntoView();
@@ -131,7 +131,7 @@ window.addEventListener('load', function() {
   }
 });
 
-// Update init function to show loading screen immediately
+//loading screen 
 function init() {
   const loadingScreen = document.querySelector('.loading-screen');
   if (loadingScreen) loadingScreen.style.display = 'flex';
